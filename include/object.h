@@ -24,6 +24,18 @@ enum class ElectricalProperty {
     INSULATING      // Insulating electrical property
 };
 
+// Enumeration for chemical properties
+enum class ChemicalProperty {
+    REACTIVE,       // Reactive chemical property
+    STABLE          // Stable chemical property
+};
+
+// Enumeration for biological properties
+enum class BiologicalProperty {
+    LIVING,         // Living biological property
+    NON_LIVING      // Non-living biological property
+};
+
 // Structure to hold mechanical parameters
 struct MechanicalParameters {
     double mass;            // Mass of the object
@@ -90,13 +102,75 @@ private:
     ElectricalProperty electricalProperty_;       // Electrical property of the object
 };
 
-// Derived class for objects with both mechanical and electrical properties
-class PhysicalObject : public MechanicalObject, public ElectricalObject {
+// Base class for chemical properties
+class ChemicalObject {
 public:
     // Constructor
-    PhysicalObject(const std::string& name, const MechanicalParameters& mechanicalParameters, const ElectricalParameters& electricalParameters,
+    ChemicalObject(const std::string& name, ChemicalProperty chemicalProperty);
+
+    // Destructor
+    ~ChemicalObject();
+
+    // Getter for object name
+    std::string getName() const;
+
+    // Getter for chemical property
+    ChemicalProperty getChemicalProperty() const;
+
+    // Simulate the object for a given time
+    void simulate(double time);
+
+private:
+    std::string name_;          // Name of the object
+    ChemicalProperty chemicalProperty_; // Chemical property of the object
+};
+
+// Base class for biological properties
+class BiologicalObject {
+public:
+    // Constructor
+    BiologicalObject(const std::string& name, BiologicalProperty biologicalProperty);
+
+    // Destructor
+    ~BiologicalObject();
+
+    // Getter for object name
+    std::string getName() const;
+
+    // Getter for biological property
+    BiologicalProperty getBiologicalProperty() const;
+
+    // Simulate the object for a given time
+    void simulate(double time);
+
+private:
+    std::string name_;              // Name of the object
+    BiologicalProperty biologicalProperty_; // Biological property of the object
+};
+
+// Derived class for objects with both mechanical and electrical properties
+class ElectroMechanicalObject : public MechanicalObject, public ElectricalObject {
+public:
+    // Constructor
+    ElectroMechanicalObject(const std::string& name, const MechanicalParameters& mechanicalParameters, const ElectricalParameters& electricalParameters,
                    MechanicalProperty mechanicalProperty, ElectricalProperty electricalProperty);
     
+    // Destructor
+    ~ElectroMechanicalObject();
+
+    // Simulate the object for a given time
+    void simulate(double time);
+};
+
+// Derived class for objects with all known object properties
+class PhysicalObject : public MechanicalObject, public ElectricalObject, public ChemicalObject, public BiologicalObject {
+public:
+    // Constructor
+    PhysicalObject(const std::string& name, const MechanicalParameters& mechanicalParameters, MechanicalProperty mechanicalProperty,
+                   const ElectricalParameters& electricalParameters, ElectricalProperty electricalProperty,
+                   const std::string& chemicalObjectName, ChemicalProperty chemicalProperty,
+                   const std::string& biologicalObjectName, BiologicalProperty biologicalProperty);
+
     // Destructor
     ~PhysicalObject();
 

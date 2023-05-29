@@ -7,7 +7,7 @@ int main() {
     ElectricalParameters electricalParameters{100.0, 50.0};
 
     // Create a PhysicalObject with both mechanical and electrical properties
-    PhysicalObject obj("MyObject", mechanicalParameters, electricalParameters, MechanicalProperty::RIGID, ElectricalProperty::CONDUCTIVE);
+    ElectroMechanicalObject obj("ElectroMechanicalObj", mechanicalParameters, electricalParameters, MechanicalProperty::RIGID, ElectricalProperty::CONDUCTIVE);
 
     // Print the object name
     std::cout << "Object Name: " << obj.MechanicalObject::getName() << std::endl;
@@ -22,6 +22,14 @@ int main() {
 
     // Simulate the object
     obj.simulate(10.0);
+
+    // let us create a full physical object there too
+    PhysicalObject physicalObject("PhysicalObj", mechanicalParameters, MechanicalProperty::RIGID,
+                                  electricalParameters, ElectricalProperty::INSULATING,
+                                  "ChemicalObj", ChemicalProperty::REACTIVE,
+                                  "BiologicalObj", BiologicalProperty::LIVING);
+
+    physicalObject.simulate(10.0);
 
     return 0;
 }
