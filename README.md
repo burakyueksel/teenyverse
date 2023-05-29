@@ -14,6 +14,13 @@ make
 ./PhysicsSimulation
 ```
 
+A clean rule is implemented for your convenience. If you like to remove the binaries from the previous build (it will work only if you had a build before, meaning you have a generated Makefile), simply run
+
+```console
+make clean_files
+```
+
+
 # Mortuis nihil nisi bonum
 
 The Teenyverse was created by [Kyle](https://www.youtube.com/watch?v=-7L6SSxIvms), a scientist unknowingly inside a Miniverse, in order to create a new source of electricity for his people. He had yet to speed up the universe's time to the point where the inhabitants could create electricity when he showcased it to Rick, Morty, and Zeep Xanflorp. When realizing he himself lived in a tiny artificial universe, he drove his ship into a cliff and died, leaving his guests to fend for themselves.

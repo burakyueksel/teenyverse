@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+#include "../parameters/mechanical_parameters.h"
 
 enum class PhysicalProperty
 {
@@ -20,13 +21,12 @@ enum class MechanicalProperty {
 
 class Object {
 public:
-    Object(const std::string& name, double mass, double volume, MechanicalProperty mechanicalProperty);
+    Object(const std::string& name, const MechanicalParameters& parameters, MechanicalProperty mechanicalProperty);
     ~Object();
 
     // Getters
     std::string getName() const;
-    double getMass() const;
-    double getVolume() const;
+    MechanicalParameters getParameters() const;
     MechanicalProperty getMechanicalProperty() const;
 
     // Other methods
@@ -34,7 +34,6 @@ public:
 
 private:
     std::string name_;
-    double mass_;
-    double volume_;
+    MechanicalParameters parameters_;
     MechanicalProperty mechanicalProperty_;
 };

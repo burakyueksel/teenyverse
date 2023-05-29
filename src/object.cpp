@@ -1,8 +1,9 @@
 #include "object.h"
+#include "../parameters/mechanical_parameters.h"
 #include <iostream>
 
-Object::Object(const std::string& name, double mass, double volume, MechanicalProperty mechanicalProperty)
-    : name_(name), mass_(mass), volume_(volume), mechanicalProperty_(mechanicalProperty) {
+Object::Object(const std::string& name, const MechanicalParameters& parameters, MechanicalProperty mechanicalProperty)
+    : name_(name), parameters_(parameters), mechanicalProperty_(mechanicalProperty) {
 }
 
 Object::~Object() {
@@ -12,12 +13,8 @@ std::string Object::getName() const {
     return name_;
 }
 
-double Object::getMass() const {
-    return mass_;
-}
-
-double Object::getVolume() const {
-    return volume_;
+MechanicalParameters Object::getParameters() const {
+    return parameters_;
 }
 
 MechanicalProperty Object::getMechanicalProperty() const {
