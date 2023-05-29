@@ -23,6 +23,12 @@ make clean_files
 
 # Mortuis nihil nisi bonum
 
+
+![image](https://github.com/burakyueksel/teenyverse/assets/40430575/b59ce589-496a-4bd7-bd02-6fa506f8423d)
+
+[Picture source](https://rickandmorty.fandom.com/wiki/Kyle)
+
+
 The Teenyverse was created by [Kyle](https://www.youtube.com/watch?v=-7L6SSxIvms), a scientist unknowingly inside a Miniverse, in order to create a new source of electricity for his people. He had yet to speed up the universe's time to the point where the inhabitants could create electricity when he showcased it to Rick, Morty, and Zeep Xanflorp. When realizing he himself lived in a tiny artificial universe, he drove his ship into a cliff and died, leaving his guests to fend for themselves.
 
 Rick and Zeep spent months building machines to kill each other; Morty had left early on after growing tired of their fights. Morty met the Tree People and somehow became their leader. After living with them for some months, he ordered the Tree People to take Rick and Zeep back to their home while forcing the two scientists to work together. It was destroyed by Rick when he destroyed the Miniverse created by Zeep. 
