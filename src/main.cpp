@@ -1,17 +1,28 @@
 #include <iostream>
 #include "object.h"
-#include "../parameters/mechanical_parameters.h"
 
 int main() {
+    // Create mechanical and electrical parameters
+    MechanicalParameters mechanicalParameters{10.0, 20.0};
+    ElectricalParameters electricalParameters{100.0, 50.0};
 
-    MechanicalParameters parameters{10.0, 20.0};
-    Object obj("TestObject", parameters, MechanicalProperty::RIGID);
+    // Create a PhysicalObject with both mechanical and electrical properties
+    PhysicalObject obj("MyObject", mechanicalParameters, electricalParameters, MechanicalProperty::RIGID, ElectricalProperty::CONDUCTIVE);
 
-    // Accessing object parameters
-    MechanicalParameters objParameters = obj.getParameters();
-    std::cout << "Object parameters - Mass: " << objParameters.mass_kg << ", Moment of Inertia: " << objParameters.momentOfInertia_kgmm2 << std::endl;
+    // Print the object name
+    std::cout << "Object Name: " << obj.MechanicalObject::getName() << std::endl;
 
+    // Access and print the mechanical parameters
+    MechanicalParameters mechanicalParams = obj.getMechanicalParameters();
+    std::cout << "Mechanical Parameters - Mass: " << mechanicalParams.mass << ", Moment of Inertia: " << mechanicalParams.momentOfInertia << std::endl;
+
+    // Access and print the electrical parameters
+    ElectricalParameters electricalParams = obj.getElectricalParameters();
+    std::cout << "Electrical Parameters - Resistance: " << electricalParams.resistance << ", Capacitance: " << electricalParams.capacitance << std::endl;
+
+    // Simulate the object
     obj.simulate(10.0);
 
     return 0;
 }
+

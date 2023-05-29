@@ -11,7 +11,7 @@ To run the code:
 ```console
 cmake .
 make
-./PhysicsSimulation
+./build/PhysicsSimulation
 ```
 
 A clean rule is implemented for your convenience. If you like to remove the binaries from the previous build (it will work only if you had a build before, meaning you have a generated Makefile), simply run
