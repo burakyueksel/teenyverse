@@ -75,8 +75,8 @@ void ElectricalObject::simulate(double time) {
 }
 
 // Constructor for ChemicalObject
-ChemicalObject::ChemicalObject(const std::string& name, ChemicalProperty chemicalProperty)
-    : name_(name), chemicalProperty_(chemicalProperty) {
+ChemicalObject::ChemicalObject(const std::string& name, const ChemicalParameters& chemicalParameters, ChemicalProperty chemicalProperty)
+    : name_(name), chemicalParameters_(chemicalParameters), chemicalProperty_(chemicalProperty) {
 }
 
 // Destructor for ChemicalObject
@@ -86,6 +86,11 @@ ChemicalObject::~ChemicalObject() {
 // Getter for object name
 std::string ChemicalObject::getName() const {
     return name_;
+}
+
+// Getter for chemical parameters
+ChemicalParameters ChemicalObject::getChemicalParameters() const {
+    return chemicalParameters_;
 }
 
 // Getter for chemical property
@@ -105,8 +110,8 @@ void ChemicalObject::simulate(double time) {
 }
 
 // Constructor for BiologicalObject
-BiologicalObject::BiologicalObject(const std::string& name, BiologicalProperty biologicalProperty)
-    : name_(name), biologicalProperty_(biologicalProperty) {
+BiologicalObject::BiologicalObject(const std::string& name, const BiologicalParameters& biologicalParameters, BiologicalProperty biologicalProperty)
+    : name_(name), biologicalParameters_(biologicalParameters), biologicalProperty_(biologicalProperty) {
 }
 
 // Destructor for BiologicalObject
@@ -116,6 +121,11 @@ BiologicalObject::~BiologicalObject() {
 // Getter for object name
 std::string BiologicalObject::getName() const {
     return name_;
+}
+
+// Getter for biological parameters
+BiologicalParameters BiologicalObject::getBiologicalParameters() const {
+    return biologicalParameters_;
 }
 
 // Getter for biological property
@@ -153,12 +163,12 @@ void ElectroMechanicalObject::simulate(double time) {
 // Constructor for PhysicalObject
 PhysicalObject::PhysicalObject(const std::string& name, const MechanicalParameters& mechanicalParameters, MechanicalProperty mechanicalProperty,
                                const ElectricalParameters& electricalParameters, ElectricalProperty electricalProperty,
-                               const std::string& chemicalObjectName, ChemicalProperty chemicalProperty,
-                               const std::string& biologicalObjectName, BiologicalProperty biologicalProperty)
+                               const ChemicalParameters& chemicalParameters, ChemicalProperty chemicalProperty,
+                               const BiologicalParameters& biologicalParameters, BiologicalProperty biologicalProperty)
     : MechanicalObject(name, mechanicalParameters, mechanicalProperty),
       ElectricalObject(name, electricalParameters, electricalProperty),
-      ChemicalObject(chemicalObjectName, chemicalProperty),
-      BiologicalObject(biologicalObjectName, biologicalProperty) {
+      ChemicalObject(name, chemicalParameters, chemicalProperty),
+      BiologicalObject(name, biologicalParameters, biologicalProperty) {
 }
 
 // Destructor for PhysicalObject

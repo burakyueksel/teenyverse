@@ -48,6 +48,19 @@ struct ElectricalParameters {
     double capacitance;     // Capacitance of the object
 };
 
+// Structure to hold chemical parameters
+struct ChemicalParameters {
+    double acidity;
+    double toxicity;
+};
+
+// Structure to hold biological parameters
+struct BiologicalParameters {
+    int age;
+    std::string species;
+};
+
+
 // Base class for mechanical properties
 class MechanicalObject {
 public:
@@ -106,13 +119,16 @@ private:
 class ChemicalObject {
 public:
     // Constructor
-    ChemicalObject(const std::string& name, ChemicalProperty chemicalProperty);
+    ChemicalObject(const std::string& name, const ChemicalParameters& chemicalParameters, ChemicalProperty chemicalProperty);
 
     // Destructor
     ~ChemicalObject();
 
     // Getter for object name
     std::string getName() const;
+
+    // Getter for chemical parameters
+    ChemicalParameters getChemicalParameters() const;
 
     // Getter for chemical property
     ChemicalProperty getChemicalProperty() const;
@@ -122,6 +138,7 @@ public:
 
 private:
     std::string name_;          // Name of the object
+    ChemicalParameters chemicalParameters_; // Chemical parameters of the object
     ChemicalProperty chemicalProperty_; // Chemical property of the object
 };
 
@@ -129,13 +146,16 @@ private:
 class BiologicalObject {
 public:
     // Constructor
-    BiologicalObject(const std::string& name, BiologicalProperty biologicalProperty);
+    BiologicalObject(const std::string& name, const BiologicalParameters& biologicalParameters, BiologicalProperty biologicalProperty);
 
     // Destructor
     ~BiologicalObject();
 
     // Getter for object name
     std::string getName() const;
+
+    // Getter for biological parameters
+    BiologicalParameters getBiologicalParameters() const;
 
     // Getter for biological property
     BiologicalProperty getBiologicalProperty() const;
@@ -145,6 +165,7 @@ public:
 
 private:
     std::string name_;              // Name of the object
+    BiologicalParameters biologicalParameters_; // Biological parameters of the object
     BiologicalProperty biologicalProperty_; // Biological property of the object
 };
 
@@ -166,10 +187,11 @@ public:
 class PhysicalObject : public MechanicalObject, public ElectricalObject, public ChemicalObject, public BiologicalObject {
 public:
     // Constructor
-    PhysicalObject(const std::string& name, const MechanicalParameters& mechanicalParameters, MechanicalProperty mechanicalProperty,
+    PhysicalObject(const std::string& name, 
+                   const MechanicalParameters& mechanicalParameters, MechanicalProperty mechanicalProperty,
                    const ElectricalParameters& electricalParameters, ElectricalProperty electricalProperty,
-                   const std::string& chemicalObjectName, ChemicalProperty chemicalProperty,
-                   const std::string& biologicalObjectName, BiologicalProperty biologicalProperty);
+                   const ChemicalParameters& chemicalParameters, ChemicalProperty chemicalProperty,
+                   const BiologicalParameters& biologicalParameters, BiologicalProperty biologicalProperty);
 
     // Destructor
     ~PhysicalObject();
