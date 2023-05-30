@@ -14,7 +14,7 @@ public:
     Quadrotor(const std::string& name, const MechanicalParameters& mechanicalParameters, MechanicalProperty mechanicalProperty);
     ~Quadrotor();
 
-    void simulate(double time);
+    void simulate(double time); // Non-virtual member function
 
 private:
     void simulateRotationalMotion(double time);

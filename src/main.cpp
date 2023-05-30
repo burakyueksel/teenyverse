@@ -7,6 +7,7 @@
 #include <iostream>
 #include "electromechanical_object.h"
 #include "physical_object.h"
+#include "simplest_point_quadrotor.h"
 
 int main() {
     // Create mechanical and electrical parameters
@@ -39,6 +40,11 @@ int main() {
                                   biologicalParams, BiologicalProperty::LIVING);
 
     physicalObject.simulate(10.0);
+
+    // let us create a simple quadrotor obj purely mechanical
+
+    Quadrotor quadrotor("QuadrotorObj", mechanicalParams, MechanicalProperty::RIGID);
+    quadrotor.simulate(10.0);
 
     return 0;
 }
