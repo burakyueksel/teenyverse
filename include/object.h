@@ -1,3 +1,9 @@
+/*
+ * File: object.h
+ * Author: Burak Yueksel
+ * Date: 2023-05-29
+ */
+
 #pragma once
 
 #include <string>
@@ -167,35 +173,4 @@ private:
     std::string name_;              // Name of the object
     BiologicalParameters biologicalParameters_; // Biological parameters of the object
     BiologicalProperty biologicalProperty_; // Biological property of the object
-};
-
-// Derived class for objects with both mechanical and electrical properties
-class ElectroMechanicalObject : public MechanicalObject, public ElectricalObject {
-public:
-    // Constructor
-    ElectroMechanicalObject(const std::string& name, const MechanicalParameters& mechanicalParameters, const ElectricalParameters& electricalParameters,
-                   MechanicalProperty mechanicalProperty, ElectricalProperty electricalProperty);
-    
-    // Destructor
-    ~ElectroMechanicalObject();
-
-    // Simulate the object for a given time
-    void simulate(double time);
-};
-
-// Derived class for objects with all known object properties
-class PhysicalObject : public MechanicalObject, public ElectricalObject, public ChemicalObject, public BiologicalObject {
-public:
-    // Constructor
-    PhysicalObject(const std::string& name, 
-                   const MechanicalParameters& mechanicalParameters, MechanicalProperty mechanicalProperty,
-                   const ElectricalParameters& electricalParameters, ElectricalProperty electricalProperty,
-                   const ChemicalParameters& chemicalParameters, ChemicalProperty chemicalProperty,
-                   const BiologicalParameters& biologicalParameters, BiologicalProperty biologicalProperty);
-
-    // Destructor
-    ~PhysicalObject();
-
-    // Simulate the object for a given time
-    void simulate(double time);
 };

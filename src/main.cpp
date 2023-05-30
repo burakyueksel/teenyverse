@@ -1,5 +1,12 @@
+/*
+ * File: main.cpp
+ * Author: Burak Yueksel
+ * Date: 2023-05-29
+ */
+
 #include <iostream>
-#include "object.h"
+#include "electromechanical_object.h"
+#include "physical_object.h"
 
 int main() {
     // Create mechanical and electrical parameters

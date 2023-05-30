@@ -1,3 +1,9 @@
+/*
+ * File: object.cpp
+ * Author: Burak Yueksel
+ * Date: 2023-05-29
+ */
+
 #include "object.h"
 #include <iostream>
 
@@ -142,43 +148,4 @@ void BiologicalObject::simulate(double time) {
         std::cout << "Simulating non-living object " << name_ << " for " << time << " seconds.\n";
         // Implement non-living simulation here
     }
-}
-
-// Constructor for ElectroMechanicalObject
-ElectroMechanicalObject::ElectroMechanicalObject(const std::string& name, const MechanicalParameters& mechanicalParameters, const ElectricalParameters& electricalParameters,
-                               MechanicalProperty mechanicalProperty, ElectricalProperty electricalProperty)
-    : MechanicalObject(name, mechanicalParameters, mechanicalProperty), ElectricalObject(name, electricalParameters, electricalProperty) {
-}
-
-// Destructor for ElectroMechanicalObject
-ElectroMechanicalObject::~ElectroMechanicalObject() {
-}
-
-// Simulate the object by calling simulate() from both base classes
-void ElectroMechanicalObject::simulate(double time) {
-    MechanicalObject::simulate(time);
-    ElectricalObject::simulate(time);
-}
-
-// Constructor for PhysicalObject
-PhysicalObject::PhysicalObject(const std::string& name, const MechanicalParameters& mechanicalParameters, MechanicalProperty mechanicalProperty,
-                               const ElectricalParameters& electricalParameters, ElectricalProperty electricalProperty,
-                               const ChemicalParameters& chemicalParameters, ChemicalProperty chemicalProperty,
-                               const BiologicalParameters& biologicalParameters, BiologicalProperty biologicalProperty)
-    : MechanicalObject(name, mechanicalParameters, mechanicalProperty),
-      ElectricalObject(name, electricalParameters, electricalProperty),
-      ChemicalObject(name, chemicalParameters, chemicalProperty),
-      BiologicalObject(name, biologicalParameters, biologicalProperty) {
-}
-
-// Destructor for PhysicalObject
-PhysicalObject::~PhysicalObject() {
-}
-
-// Simulate the object by calling simulate() from all base classes
-void PhysicalObject::simulate(double time) {
-    MechanicalObject::simulate(time);
-    ElectricalObject::simulate(time);
-    ChemicalObject::simulate(time);
-    BiologicalObject::simulate(time);
 }
